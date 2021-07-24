@@ -3,6 +3,7 @@ dotenv.config({
     path: '.env'
 })
 import { Server } from './server'
+import conn from './configs/mongoose'
 
 
 export class Application {
@@ -16,9 +17,14 @@ export class Application {
         this.server = new Server()
     }
 
+    connectDb() {
+        (() => {
+            conn()
+        })()
+    }
+
     start() {
         ((port = process.env.PORT || 5003) => {
-            console.log(port)
             this.server.app.listen(port, () => {
                 console.log(`Server is running at: http://loclahost:${port}`)
             })
