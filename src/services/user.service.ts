@@ -1,0 +1,1 @@
+import {UserRepository as repository} from '../repositories/user.repository'

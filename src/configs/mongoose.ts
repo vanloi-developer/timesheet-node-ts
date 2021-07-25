@@ -28,7 +28,7 @@ export default async function run(): Promise<void> {
     const port = process.env.MONGO_PORT || 7007
     const uri = `mongodb://${host}:${port}/node-ts-internal`
     
-    await connect(uri, options)
+    return  await connect(uri, options)
         .then(result => {
             console.log(`Successful connected to mongodb at: ${uri}`)
         })
