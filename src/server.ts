@@ -1,5 +1,5 @@
 import express from 'express'
-import MasterRouter from './routes/master.route'
+import MasterRouter from './app/routes/MasterRoute'
 
 export class Server {
     public app = express()

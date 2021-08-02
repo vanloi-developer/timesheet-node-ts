@@ -2,14 +2,14 @@
 
 import { IWrite } from "../interfaces/IWrite.interface";
 import { IRead } from "../interfaces/IREAD.interface";
-import { Collection, Connection} from "mongoose";
+import { Collection} from "mongoose";
 
 // that class only can be extended
 export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
-    public readonly _collection: Collection
+    public readonly _model: Collection
 
-    constructor(db: Connection, collectionNAme: string){
-        this._collection = db.collection(collectionNAme)
+    constructor(model: Collection){
+        this._model = model
     }
 
     create(item: T): Promise<boolean> {

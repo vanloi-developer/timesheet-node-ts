@@ -1,9 +1,6 @@
-import dotenv from 'dotenv'
-dotenv.config({
-    path: '.env'
-})
+import configs from './configs/app'
 import { Server } from './server'
-import conn from './configs/mongoose'
+import { mongooseConnection } from './database'
 
 
 export class Application {
@@ -17,14 +14,12 @@ export class Application {
         this.server = new Server()
     }
 
-    connectDb() {
-        (() => {
-            conn()
-        })()
+    async accessDatabase() {
+        return await mongooseConnection.createConnection()
     }
 
     start() {
-        ((port = process.env.PORT || 5003) => {
+        ((port = configs.APP_PORT || 5003) => {
             this.server.app.listen(port, () => {
                 console.log(`Server is running at: http://loclahost:${port}`)
             })

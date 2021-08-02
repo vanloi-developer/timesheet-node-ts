@@ -4,7 +4,7 @@ function start() {
     const application = new Application()
     application.init()
     application.start()
-    application.connectDb()
+    application.accessDatabase()
 }
 
 start()
