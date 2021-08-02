@@ -1,8 +1,9 @@
-import { BaseRouter } from "./base.route";
+import { BaseRouter } from "./BaseRoute";
 import express, { Request, Response } from 'express'
 import morgan from 'morgan'
-import UserRouter from './user.route'
+import UserRouter from './UserRouter'
 import cors from 'cors'
+
 const fakeDT = {
     "accessToken": "123",
     "encryptedAccessToken": "12345",

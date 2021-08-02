@@ -1,5 +1,5 @@
 import { Response, Request, NextFunction } from 'express'
-import { BaseRouter } from './base.route'
+import { BaseRouter } from './BaseRoute'
 
 class UserRouter extends BaseRouter {
     constructor() {
@@ -28,28 +28,12 @@ class UserRouter extends BaseRouter {
             res.json(`User controller: get roles`)
         })
 
-        this.router.post('/ChangeLanguage', (req: Request, res: Response, next: NextFunction) => {
-            res.json(`User controller: change language`)
-        })
-
-        this.router.post('/ChangePassword', (req: Request, res: Response, next: NextFunction) => {
-            res.json(`User controller: change password`)
-        })
-
-        this.router.post('/ResetPassword', (req: Request, res: Response, next: NextFunction) => {
-            res.json(`User controller: reset password`)
-        })
-
         this.router.get('/GetUserNotPagging', (req: Request, res: Response, next: NextFunction) => {
             res.json(`User controller: get user not pagging`)
         })
 
         this.router.post('/GetAllPagging', (req: Request, res: Response, next: NextFunction) => {
             res.json(`User controller: `)
-        })
-
-        this.router.post('/ImportUserFromFile', (req: Request, res: Response, next: NextFunction) => {
-            res.json(`User controller: import user from file`)
         })
 
         this.router.get('/GetProjectManagerOfUser', (req: Request, res: Response, next: NextFunction) => {
@@ -76,9 +60,6 @@ class UserRouter extends BaseRouter {
             res.json(`User controller: active user`)
         })
 
-        this.router.post('/ImportWorkingTimeFromFile', (req: Request, res: Response, next: NextFunction) => {
-            res.json(`User controller: import working time from file`)
-        })
 
         this.router.get('/GetAllPM', (req: Request, res: Response, next: NextFunction) => {
             res.json(`User controller: get all pm`)
