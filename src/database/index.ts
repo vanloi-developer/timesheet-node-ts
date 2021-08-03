@@ -1,24 +1,20 @@
-import mongoose from 'mongoose'
-import { IMongooseConnection } from './interface'
-import config from '../configs/database'
+import { connect } from 'mongoose'
 
-const uri = `${config.DB_HOST}:${config.DB_PORT}/${config.DB_NAME}`
-const options = config.options
+import { BaseMongooseConnection } from './base'
+import config, { IMongooseOption } from '../config/database'
 
-class MongooseConnection implements IMongooseConnection {
+export class MongooseConnection extends BaseMongooseConnection {
 
-    constructor(
-        public _uri: string,
-        public _options: any
-    ) {
-        this._uri = uri
-        this._options = options
+    protected static _options: IMongooseOption = config.options
+    protected static _uri: string = config.DB_URI
+
+    constructor() {
+        super()
     }
 
-    public async createConnection() {
-
+    public static async makeConnection(): Promise<void> {
         try {
-            await mongoose.connect(this._uri, this._options)
+            await connect(this._uri, this._options)
             console.log(`Successfully connected to the database`)
         }
         catch (error) {
@@ -26,4 +22,3 @@ class MongooseConnection implements IMongooseConnection {
         }
     }
 }
-export const mongooseConnection = new MongooseConnection(uri, options)

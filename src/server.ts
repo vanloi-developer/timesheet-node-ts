@@ -1,7 +1,7 @@
 import express from 'express'
-import MasterRouter from './app/routes/MasterRoute'
+import {ApiRouter} from './routes'
 
 export class Server {
     public app = express()
-    public router = MasterRouter
+    public router = ApiRouter
 }

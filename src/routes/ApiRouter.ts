@@ -1,7 +1,7 @@
-import { BaseRouter } from "./BaseRoute";
+
 import express, { Request, Response } from 'express'
 import morgan from 'morgan'
-import UserRouter from './UserRouter'
+import { UserRouter, BaseRouter } from './index'
 import cors from 'cors'
 
 const fakeDT = {
@@ -27,7 +27,7 @@ const fakeData = {
     __abp: true,
 }
 
-class MasterRouter extends BaseRouter {
+class ApiRouter extends BaseRouter {
     constructor() {
         super()
         this.configure()
@@ -58,7 +58,7 @@ class MasterRouter extends BaseRouter {
                     "encryptedAccessToken": "string",
                     "expireInSeconds": 0,
                     "userId": 0
-                  }
+                }
             })
         })
 
@@ -82,5 +82,5 @@ class MasterRouter extends BaseRouter {
 
     }
 }
-
-export = new MasterRouter().router
+Object.seal(ApiRouter)
+export const apiRouter = new ApiRouter().router

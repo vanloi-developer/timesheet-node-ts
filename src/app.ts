@@ -1,6 +1,6 @@
-import configs from './configs/app'
+import configs from './config/app'
 import { Server } from './server'
-import { mongooseConnection } from './database'
+import {  MongooseConnection } from './database'
 
 
 export class Application {
@@ -15,7 +15,7 @@ export class Application {
     }
 
     async accessDatabase() {
-        return await mongooseConnection.createConnection()
+        return await MongooseConnection.makeConnection()
     }
 
     start() {

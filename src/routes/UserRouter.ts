@@ -1,5 +1,5 @@
 import { Response, Request, NextFunction } from 'express'
-import { BaseRouter } from './BaseRoute'
+import { BaseRouter } from './BaseRouter'
 
 class UserRouter extends BaseRouter {
     constructor() {
@@ -79,4 +79,4 @@ class UserRouter extends BaseRouter {
     }
 }
 
-export = new UserRouter().router
+export const userRouter = new UserRouter().router

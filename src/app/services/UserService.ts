@@ -1,1 +1,1 @@
-import { UserRepository as repository } from '../repositories/UserRepository'
+import { UserRepository as repository } from '../Repositories/UserRepository'
