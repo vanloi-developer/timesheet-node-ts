@@ -1,4 +1,4 @@
 export interface IRead<T> {
-    find(item: T): Promise<T[]>;
-    findOne(id: string): Promise<T>;
+    retrieve: (callback: (err: any, result: T[]) => void) => void
+    findById: (id: string, callback: (err: any, result: T) => void) => void
 }

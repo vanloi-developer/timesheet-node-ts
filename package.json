@@ -6,7 +6,8 @@
     "scripts": {
         "build": "tsc --watch",
         "dev": "nodemon dist/index.js",
-        "start": "tsc && node dist/index.js"
+        "start": "tsc && node dist/index.js",
+        "postinstall": " rm -f ./node_modules/mongoose/index.d.ts "
     },
     "keywords": [],
     "author": "",

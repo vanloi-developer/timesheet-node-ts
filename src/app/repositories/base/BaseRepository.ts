@@ -1,30 +1,35 @@
-//import all interfaces
-
 import { IWrite } from "../interfaces/IWrite.interface";
 import { IRead } from "../interfaces/IREAD.interface";
-import { Collection} from "mongoose";
+import { Document, Model } from "mongoose";
 
 // that class only can be extended
-export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
-    public readonly _model: Collection
+class BaseRepository<T extends Document> implements IWrite<T>, IRead<T> {
+    private _model: Model<Document>
 
-    constructor(model: Collection){
-        this._model = model
+    constructor(modelSchema: Model<Document>) {
+        this._model = modelSchema
     }
 
-    create(item: T): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    retrieve(callback: (error: any, result: Document[]) => void): void {
+        this._model.find({}, callback)
     }
-    update(id: string, item: T): Promise<boolean> {
-        throw new Error("Method not implemented.");
+
+    findById(id: string, callback: (error: any, result: Document) => void): void {
+        this._model.findById(id, callback)
     }
-    delete(id: string): Promise<boolean> {
-        throw new Error("Method not implemented.");
+
+    create(item: Document, callback: (error: any, result: Document) => void): void {
+        item.save(callback)
     }
-    find(item: T): Promise<T[]> {
-        throw new Error("Method not implemented.");
+
+    update(_id: string, item: Document, callback: (error: any, result: Document) => void): void {
+        this._model.findByIdAndUpdate(_id, item, callback)
     }
-    findOne(id: string): Promise<T> {
-        throw new Error("Method not implemented.");
+
+    delete(_id: string, callback: (error: any, result: Document)=> void): void {
+        this._model.findByIdAndDelete(_id, callback)
     }
 }
+
+Object.seal(BaseRepository)
+export = BaseRepository

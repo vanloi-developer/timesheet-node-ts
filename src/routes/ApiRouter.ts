@@ -1,15 +1,12 @@
-
+/**
+ * Required External Modules
+ */
 import express, { Request, Response } from 'express'
 import morgan from 'morgan'
-import { UserRouter, BaseRouter } from './index'
 import cors from 'cors'
 
-const fakeDT = {
-    "accessToken": "123",
-    "encryptedAccessToken": "12345",
-    "expireInSeconds": 100,
-    "userId": 1
-}
+import { UserRouter, BaseRouter } from './index'
+
 const fakeData = {
     result: {
         application: {
