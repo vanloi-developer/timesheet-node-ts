@@ -30,6 +30,7 @@ class UserService extends BaseService<IUser> {
     delete(id: string, callback: (error: any, result: IUser) => void): void {
         this._repos.delete(id, callback)
     }
+
 }
 
 Object.seal(UserService)
