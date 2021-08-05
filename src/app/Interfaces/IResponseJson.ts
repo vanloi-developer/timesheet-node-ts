@@ -6,5 +6,7 @@ export interface IResponseJson {
     targetUrl: null,
     unAuthorizedRequest: boolean,
     __abp: boolean
+    
 }
+
 
